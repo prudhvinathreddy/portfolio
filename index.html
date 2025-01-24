@@ -1,861 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio of Prudhvinath Reddy Katha - Business Analyst and Data Visualization Expert">
-    <meta name="keywords" content="Business Analyst, Data Analyst, Data Visualization, Portfolio, KPNR">
-    <title>Prudhvinath Reddy Katha - Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #64ffda;
-            --bg-dark: #0a192f;
-            --text-light: #ccd6f6;
-            --text-dark: #8892b0;
-            --card-bg: #112240;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            color: var(--text-light);
-            background: var(--bg-dark);
-            scroll-behavior: smooth;
-        }
-
-        .skip-link {
-            position: absolute;
-            top: -40px;
-            left: 0;
-            background: var(--primary);
-            color: var(--bg-dark);
-            padding: 8px;
-            z-index: 1001;
-            transition: top 0.3s;
-        }
-
-        .skip-link:focus {
-            top: 0;
-        }
-
-        header {
-            background: rgba(10, 25, 47, 0.95);
-            padding: 20px 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-
-        header.scrolled {
-            padding: 15px 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
-
-        nav ul li a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: var(--primary);
-            transition: width 0.3s ease;
-        }
-
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 2px;
-            cursor: pointer;
-        }
-
-        .menu-toggle span {
-            width: 25px;
-            height: 2px;
-            gap: 2px;
-            transition: all 0.3s ease;
-        }
-
-        section {
-            padding: 100px 20px;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .home-container, .about-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .text {
-            flex: 1;
-            min-width: 300px;
-        }
-	.about-container .text p {
-		padding: 20px;
-   		text-align: end;
-    		font-style: italic;
-	}
-	.about-container a.btn {
-   		float: right;
-	}
-        .image-holder {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            max-width: 300px;
-        }
-
-        .image-holder img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
-        }
-
-        .image-holder img:hover {
-            transform: scale(1.05);
-        }
-
-        .home-content h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            margin-bottom: 20px;
-            color: var(--text-light);
-            animation: fadeInUp 1s ease;
-        }
-
-        .tagline {
-            color: var(--primary);
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            animation: fadeInUp 1s ease 0.4s;
-            animation-fill-mode: both;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 15px 30px;
-            background: transparent;
-            color: var(--primary);
-            border: 1px solid var(--primary);
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .btn:hover {
-            background: rgba(100, 255, 218, 0.1);
-            transform: translateY(-3px);
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            color: var(--text-light);
-            margin-bottom: 50px;
-            position: relative;
-            padding-bottom: 20px;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100px;
-            height: 2px;
-            background: var(--primary);
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 20px;
-        }
-
-        .project-card {
-            background: var(--card-bg);
-            border-radius: 8px;
-            padding: 25px;
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .project-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 4px;
-            margin-bottom: 20px;
-        }
-
-        .project-card h3 {
-            color: var(--text-light);
-            margin-bottom: 15px;
-        }
-
-        .project-card p {
-            color: var(--text-dark);
-            margin-bottom: 20px;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .project-links a {
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        .experience-grid {
-    /*display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));*/
-    gap: 2rem;
-	
-}
-
-.experience-box {
-    background: var(--card-bg);
-	margin-bottom:10px;
-    border-radius: 10px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid rgba(100, 255, 218, 0.1);
-}
-
-.experience-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.experience-content {
-    padding: 25px;
-}
-
-.experience-date {
-    display: inline-block;
-    color: var(--primary);
-    font-size: 0.9rem;
-    margin-bottom: 10px;
-    font-weight: 500;
-}
-
-.experience-box h3 {
-    color: var(--text-light);
-    margin-bottom: 15px;
-    font-size: 1.25rem;
-}
-
-.experience-box ul {
-    list-style: none;
-    padding: 0;
-}
-
-.experience-box ul li {
-    color: var(--text-dark);
-    margin-bottom: 10px;
-    padding-left: 20px;
-    position: relative;
-}
-
-.experience-box ul li::before {
-    content: "▹";
-    position: absolute;
-    left: 0;
-    color: var(--primary);
-}
-
-@media (max-width: 768px) {
-    .experience-grid {
-        grid-template-columns: 1fr;
-        padding: 20px;
-    }
-}
-
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-	        max-width:90%;
-            margin:20px;
-        }
-
-        .gallery img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            opacity: 0;
-        }
-
-        .gallery img.visible {
-            opacity: 1;
-        }
-
-        .gallery img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        .lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 1001;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .lightbox-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90%;
-        }
-
-        .lightbox-content img {
-            max-width: 100%;
-            max-height: 90vh;
-            object-fit: contain;
-	border-radius:8px;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: -40px;
-            right: 0;
-            color: white;
-            font-size: 30px;
-            cursor: pointer;
-		background-color: rgba(0, 0, 0, 0.9);
-        }
-
-        .contact-form {
-            max-width: 800px;
-            
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 8px;
-        }
-
-        .contact-form label {
-            display: block;
-            color: var(--text-light);
-            margin-bottom: 8px;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            background: var(--bg-dark);
-            border: 1px solid #233554;
-            border-radius: 4px;
-            color: var(--text-light);
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .contact-form button {
-            background: transparent;
-            color: var(--primary);
-            border: 1px solid var(--primary);
-            padding: 12px 30px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .contact-form button:hover {
-            background: rgba(100, 255, 218, 0.1);
-            transform: translateY(-2px);
-        }
-
-        footer {
-            background: var(--card-bg);
-            padding: 40px;
-            text-align: center;
-        }
-
-        footer a {
-            color: var(--primary);
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: flex;
-            }
-
-            nav ul {
-                display: none;
-                position: absolute;
-                top: 100%;
-                right: 0;
-                background: var(--card-bg);
-                flex-direction: column;
-                padding: 20px;
-                width: 100%;
-            }
-
-            nav ul.active {
-                display: flex;
-            }
-
-            .timeline::before {
-                left: 30px;
-            }
-
-            .timeline-item {
-                width: calc(100% - 60px);
-                margin-left: 60px !important;
-            }
-
-            .timeline-item::before {
-                left: -46px !important;
-            }
-
-            .home-container,
-            .about-container {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .gallery {
-                padding: 20px;
-            }
-        }
-		 .popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: #273f44;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-        }
-        .popup .popup-content {
-            text-align: center;
-        }
-        .popup button {
-            padding: 10px 20px;
-            background: #112240;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .popup button:hover {
-            background: #e53935;
-        }
-    </style>
-</head>
-<body>
-   <!-- <a href="#home" class="skip-link">Skip to main content</a>-->
-
-    <header role="banner">
-        <nav role="navigation" aria-label="Main navigation">
-            <div class="logo">KPNR</div>
-            <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#experience">Experience</a></li>
-               <!-- <li><a href="#gallery">Gallery</a></li>-->
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main id="main-content">
-        <section id="home">
-            <div class="home-content">
-                <div class="home-container">
-                    <div class="text">
-                        <h1>Prudhvinath Reddy Katha</h1>
-                        <p>Business Analyst | Data Analyst | Data Visualization Expert</p>
-			
-                        <div class="tagline">LEARN | DEVELOP | DELIVER</div>
-                        <a href="https://www.linkedin.com/in/kpnr/" class="btn" target="_blank" rel="noopener noreferrer">Visit My LinkedIn</a>
-                    </div>
-                    <div class="image-holder">
-                        <img src="images/gallery3.jpg" alt="Prudhvinath Reddy Katha" loading="lazy">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="about">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-container">
-                <div class="image-holder">
-                    <img src="images/gallery1.jpg" alt="Prudhvinath working" loading="lazy">
-                </div>
-                <div class="text">
-                   <p>
-			   I'm Prudhvi, a Business Analyst and Data Visualization Expert with over three years of experience. 
-			   My expertise lies in data quality management, business intelligence, and advanced analytics. 
-			   Skilled in SQL, Python, Tableau, and Power BI, I transform complex data into actionable insights and interactive dashboards. 
-			   I am passionate about driving strategic decisions through data-driven strategies and effective reporting solutions.
-                    </p>
-			<a href="assets/Resume.pdf" class="btn" target="_blank" download="Prudhvi_Resume.pdf" aria-label="Download Resume">Download Resume</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects">
-            <h2 class="section-title">Projects</h2>
-            <div class="project-grid">
-                <div class="project-card">
-                    <img src="images/projectimg1.png" alt="ISV MP Forecasting Project" loading="lazy">
-                    <h3>ISV MP Forecasting</h3>
-                    <p>Developed SQL-based solutions for forecasting and pipeline management, improving accuracy by 20%. Implemented automated reporting systems that reduced manual effort by 15 hours per week.</p>
-                    <div class="project-links">
-                        <a href="https://github.com/prudhvinathreddy/python_sqlite" target="_blank" rel="noopener noreferrer">GitHub</a>
-                        <a href="https://prudhvinathreddy.github.io/python_sqlite/" target="_blank" rel="noopener noreferrer">Documentation</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="images/projectimg2.jpeg" alt="Sales Dashboard Project" loading="lazy">
-                    <h3>Sales Dashboard</h3>
-                    <p>Built an interactive Tableau dashboard tracking key sales metrics, enabling data-driven decisions that led to a 25% increase in sales team productivity.</p>
-                    <div class="project-links">
-                        <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
-                        <a href="#" target="_blank" rel="noopener noreferrer">Documentation</a>
-                    </div>
-                </div>
-                <!--<div class="project-card">
-                    <img src="images/projectimg3.jpeg" alt="air quality image" loading="lazy">
-                    <h3>Air Quality Predictions</h3>
-                    <p>Developed machine learning models achieving 90% accuracy in air quality predictions. Created Power BI dashboards for real-time monitoring and analysis.</p>
-                    <div class="project-links">
-                        <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
-                        <a href="#" target="_blank" rel="noopener noreferrer">Documentation</a>
-                    </div>
-                </div>-->
-                <div class="project-card">
-                    <img src="images/projectimg4.png" alt="Image Sta" loading="lazy">
-                    <h3>Secure Chat with Image Steganography</h3>
-                    <p>This Angular-based application provides a secure platform for instant messaging, enhanced with image steganography to ensure message confidentiality.</p>
-                    <div class="project-links">
-                        <a href="https://github.com/prudhvinathreddy/chat-app" target="_blank" rel="noopener noreferrer">GitHub</a>
-                        <a href="https://prudhvinathreddy.github.io/chat-app/" target="_blank" rel="noopener noreferrer">Documentation</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-<section id="experience">
-    <h2 class="section-title">Experience</h2>
-    <div class="experience-grid">
-        <div class="experience-box">
-            <div class="experience-content">
-                <span class="experience-date">March 2023 - Present</span>
-                <h3>Data Analyst & Big Data Developer<p style="font-size:medium; color:#579acc"> at Cognizant Technology Services, India</p></h3>
-                <ul>
-                    <li>Led data governance initiatives reducing reporting errors by 40%</li>
-                    <li>Implemented automated dashboards saving 20+ hours weekly</li>
-                    <li>Managed a team of 3 junior analysts</li>
-                </ul>
-            </div>
-        </div>
-        <div class="experience-box">
-            <div class="experience-content">
-                <span class="experience-date">January 2021 - February 2023</span>
-                <h3>Programmer Analyst Intern <p style="font-size:medium; color:#579acc"> at Cognizant Technology Services, India</p></h3>
-                <ul>
-                    <li>Developed predictive models with 85% accuracy</li>
-                    <li>Optimized database queries improving performance by 60%</li>
-                    <li>Created automated reporting systems</li>
-                </ul>
-            </div>
-        </div>
-        <div class="experience-box">
-            <div class="experience-content">
-                <span class="experience-date">June 2020 - December 2020</span>
-                <h3>Data Analyst Intern <p style="font-size:medium; color:#579acc;"> at IIT Chennai, India</p></h3>
-                <ul>
-                    <li>Assisted in data cleaning and preparation</li>
-                    <li>Created visualization dashboards</li>
-                    <li>Participated in agile development process</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-
-        <!--
-	    <section id="gallery">
-            <h2 class="section-title">Gallery</h2>
-            <div class="gallery">
-                <img src="images\gallery5.jpg" alt="Gallery Image 1" onclick="openLightbox(this)" loading="lazy">
-                <img src="images\gallery1.jpg" alt="Gallery Image 2" onclick="openLightbox(this)" loading="lazy">
-                <img src="images\gallery2.jpg" alt="Gallery Image 3" onclick="openLightbox(this)" loading="lazy">
-                <img src="images\gallery3.jpg" alt="Gallery Image 4" onclick="openLightbox(this)" loading="lazy">
-                <img src="images\gallery4.jpg" alt="Gallery Image 5" onclick="openLightbox(this)" loading="lazy">
-                <img src="images\gallery5.jpg" alt="Gallery Image 6" onclick="openLightbox(this)" loading="lazy">
-            </div>
-        </section>
-	    -->
-
-        <section id="contact">
-            <h2 class="section-title">Contact</h2>
-            <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)" action="https://formspree.io/f/xrbbdkly" method="POST">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
-                </div>
-                <button type="submit">Send Message</button>
-            </form>
-        </section>
-		<div id="popup" class="popup">
-        <div class="popup-content">
-            <h3>Thank you for your message!</h3>
-            <p style="padding: 20px;">We have received your message and will get back to you soon.</p>
-            <button onclick="closePopup()">Close</button>
-        </div>
-    </div>
-    </main>
-
-    <footer role="contentinfo">
-        <p>&copy; 2025 Prudhvinath Reddy Katha. All Rights Reserved.</p>
-        <nav aria-label="Footer navigation">
-            <a href="mailto:prudhvinathreddy222@gmail.com" aria-label="Send email">Email</a>
-            <a href="https://www.linkedin.com/in/kpnr/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">LinkedIn</a>
-		<a href="assets/Resume.pdf" class="btn" target="_blank" download="Prudhvi_Resume.pdf" aria-label="Download Resume">Resume</a>
-	</nav>
-    </footer>
-
-    <!-- Lightbox Modal -->
-    <div id="lightbox" class="lightbox" role="dialog" aria-label="Image lightbox">
-        <div class="lightbox-content">
-            <button class="close-btn" onclick="closeLightbox()" aria-label="Close lightbox">&times;</button>
-            <img id="lightbox-img" src="" alt="Enlarged gallery image">
-        </div>
-    </div>
-
-    <script>
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            header.classList.toggle('scrolled', window.scrollY > 0);
-        });
-
-        // Mobile menu toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const nav = document.querySelector('nav ul');
-
-        menuToggle.addEventListener('click', () => {
-            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-            menuToggle.setAttribute('aria-expanded', !isExpanded);
-            nav.classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('nav') && nav.classList.contains('active')) {
-                nav.classList.remove('active');
-                menuToggle.setAttribute('aria-expanded', 'false');
-            }
-        });
-
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                    // Close mobile menu if open
-                    nav.classList.remove('active');
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                }
-            });
-        });
-
-        // Lightbox functionality
-        function openLightbox(imgElement) {
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            lightbox.style.display = 'flex';
-            lightboxImg.src = imgElement.src;
-            lightboxImg.alt = imgElement.alt;
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLightbox() {
-            const lightbox = document.getElementById('lightbox');
-            lightbox.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        // Close lightbox on outside click
-        document.getElementById('lightbox').addEventListener('click', (e) => {
-            if (e.target.id === 'lightbox') {
-                closeLightbox();
-            }
-        });
-
-        // Image lazy loading with Intersection Observer
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-
-        document.querySelectorAll('.gallery img').forEach(img => {
-            imageObserver.observe(img);
-        });
-
-        // Form submission handler
-		function handleSubmit(event) {
-            event.preventDefault(); // Prevent the default form submission
-
-            // Create a FormData object to send the form data to Formspree
-            const formData = new FormData(event.target);
-
-            fetch(event.target.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => {
-                console.log(response); // Log the response to the console for debugging
-
-                if (response.ok) {
-                    // Show the success popup if status is 200 OK
-                    showPopup();
-                } else {
-                    return response.json().then(data => {
-                        // Display the error message if there's a problem
-                        alert(`Error: ${data.error || 'There was a problem with the form submission.'}`);
-                    });
-                }
-            })
-            .catch(error => {
-                // Log the error to the console and display an alert
-                console.error(error);
-                alert('There was a problem with the form submission. Please try again.');
-            });
-        }
-
-        function showPopup() {
-            document.getElementById('popup').style.display = 'block';
-        }
-
-        function closePopup() {
-            document.getElementById('popup').style.display = 'none';
-        }
-    </script>
+	<head>
+		<meta charset="UTF-8">
+    		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    		<meta name="description" content="Portfolio of Prudhvinath Reddy Katha - Business Analyst and Data Visualization Expert">
+    		<meta name="keywords" content="Business Analyst, Data Analyst, Data Visualization, Portfolio, KPNR">
+    		<title>Prudhvinath Reddy Katha - Portfolio</title>
+    		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="styles.css">
+	</head>
+	<body>
+		<!-- <a href="#home" class="skip-link">Skip to main content</a>-->
+		<header role="banner">
+			<nav role="navigation" aria-label="Main navigation">
+				<div class="logo">KPNR</div>
+				<button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+					<span></span>
+                			<span></span>
+                			<span></span>
+				</button>
+				<ul>
+					<li><a href="#home">Home</a></li>
+                			<li><a href="#about">About</a></li>
+                			<li><a href="#projects">Projects</a></li>
+                			<li><a href="#experience">Experience</a></li>
+               				<!-- <li><a href="#gallery">Gallery</a></li>-->
+                			<li><a href="#contact">Contact</a></li>
+            			</ul>
+			</nav>
+		</header>
+<!-- HOME SECTION -->
+		<main id="main-content">
+			<section id="home">
+				<div class="home-content">
+					<div class="home-container">
+						<div class="text">
+							<h1>Prudhvinath Reddy Katha</h1>
+							<p>Business Analyst | Data Analyst | Data Visualization Expert</p>
+							<div class="tagline">LEARN | DEVELOP | DELIVER</div>
+							<a href="https://www.linkedin.com/in/kpnr/" class="btn" target="_blank" rel="noopener noreferrer">Visit My LinkedIn</a>
+						</div>
+						<div class="image-holder">
+							<img src="images/gallery3.jpg" alt="Prudhvinath Reddy Katha" loading="lazy">
+						</div>
+					</div>
+				</div>
+			</section>
+<!-- ABOUT SECTION -->
+			<section id="about">
+				<h2 class="section-title">About Me</h2>
+				<div class="about-container">
+					<div class="image-holder">
+						<img src="images/gallery1.jpg" alt="Prudhvinath working" loading="lazy">
+					</div>
+					<div class="text">
+						<p>
+							I'm Prudhvi, a Business Analyst and Data Visualization Expert with over three years of experience. 
+			   				My expertise lies in data quality management, business intelligence, and advanced analytics. 
+			   				Skilled in SQL, Python, Tableau, and Power BI, I transform complex data into actionable insights and interactive dashboards. 
+			   				I am passionate about driving strategic decisions through data-driven strategies and effective reporting solutions.
+						</p>
+						<a href="assets/Resume.pdf" class="btn" target="_blank" download="Prudhvi_Resume.pdf" aria-label="Download Resume">Download Resume</a>
+					</div>
+				</div>
+			</section>
+<!-- PROJECTS SECTION -->
+			<section id="projects">
+				<h2 class="section-title">Projects</h2>
+				<div class="project-grid">
+					<div class="project-card">
+						<img src="images/projectimg1.png" alt="ISV MP Forecasting Project" loading="lazy">
+						<h3>ISV MP Forecasting</h3>
+						<p>Developed SQL-based solutions for forecasting and pipeline management, improving accuracy by 20%. Implemented automated reporting systems that reduced manual effort by 15 hours per week.</p>
+						<div class="project-links">
+							<a href="https://github.com/prudhvinathreddy/python_sqlite" target="_blank" rel="noopener noreferrer">GitHub</a>
+							<a href="https://prudhvinathreddy.github.io/python_sqlite/" target="_blank" rel="noopener noreferrer">Documentation</a>
+						</div>
+					</div>
+					<div class="project-card">
+						<img src="images/projectimg2.jpeg" alt="Sales Dashboard Project" loading="lazy">
+						<h3>Sales Dashboard</h3>
+                    				<p>Built an interactive Tableau dashboard tracking key sales metrics, enabling data-driven decisions that led to a 25% increase in sales team productivity.</p>
+						<div class="project-links">
+							<a href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        				<a href="#" target="_blank" rel="noopener noreferrer">Documentation</a>
+                    				</div>
+                			</div>
+			                <!--<div class="project-card">
+			                    <img src="images/projectimg3.jpeg" alt="air quality image" loading="lazy">
+			                    <h3>Air Quality Predictions</h3>
+			                    <p>Developed machine learning models achieving 90% accuracy in air quality predictions. Created Power BI dashboards for real-time monitoring and analysis.</p>
+			                    <div class="project-links">
+			                        <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+			                        <a href="#" target="_blank" rel="noopener noreferrer">Documentation</a>
+			                    </div>
+			                </div>-->
+			                <div class="project-card">
+			                    <img src="images/projectimg4.png" alt="Image Sta" loading="lazy">
+			                    <h3>Secure Chat with Image Steganography</h3>
+			                    <p>This Angular-based application provides a secure platform for instant messaging, enhanced with image steganography to ensure message confidentiality.</p>
+			                    <div class="project-links">
+			                        <a href="https://github.com/prudhvinathreddy/chat-app" target="_blank" rel="noopener noreferrer">GitHub</a>
+			                        <a href="https://prudhvinathreddy.github.io/chat-app/" target="_blank" rel="noopener noreferrer">Documentation</a>
+			                    </div>
+			                </div>
+				</div>
+			</section>
+<!-- EXPERIENCE SECTION -->
+			<section id="experience">
+				<h2 class="section-title">Experience</h2>
+				<div class="experience-grid">
+					<div class="experience-box">
+						<div class="experience-content">
+							<div class="experience-header">
+								<h3>Data Analyst & Big Data Developer
+									<p style="font-size:medium; color:#579acc"> at Cognizant Technology Services, India</p>
+								</h3>
+								<span class="experience-date">August 2021 - Decembern2022</span>
+							</div>
+							<ul>
+								<li>Led data governance initiatives reducing reporting errors by 40%</li>
+                    						<li>Implemented automated dashboards saving 20+ hours weekly</li>
+                    						<li>Managed a team of 3 junior analysts</li>
+                					</ul>
+						</div>
+        				</div>
+					<div class="experience-box">
+						<div class="experience-content">
+							<div class="experience-header">
+								<h3>Programmer Analyst Intern 
+									<p style="font-size:medium; color:#579acc"> at Cognizant Technology Services, India</p>
+								</h3>
+                						<span class="experience-date">August 2020 - July 2021</span>
+                					</div>
+                					<ul>
+                   	 					<li>Developed predictive models with 85% accuracy</li>
+                    						<li>Optimized database queries improving performance by 60%</li>
+                    						<li>Created automated reporting systems</li>
+                					</ul>
+            					</div>
+        				</div>
+					<div class="experience-box">
+						<div class="experience-content">
+							<div class="experience-header">
+								<h3>Data Analyst Intern 
+									<p style="font-size:medium; color:#579acc;"> at IIT Chennai, India</p>
+								</h3>
+                						<span class="experience-date">January 2019 - July 2020</span>
+							</div>
+							<ul>
+								<li>Assisted in data cleaning and preparation</li>
+                    						<li>Created visualization dashboards</li>
+                    						<li>Participated in agile development process</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+<!-- GALLERY SECTION -->
+			<!--<section id="gallery">
+				<h2 class="section-title">Gallery</h2>
+				<div class="gallery">
+					<img src="images\gallery5.jpg" alt="Gallery Image 1" onclick="openLightbox(this)" loading="lazy">
+		        		<img src="images\gallery1.jpg" alt="Gallery Image 2" onclick="openLightbox(this)" loading="lazy">
+		        		<img src="images\gallery2.jpg" alt="Gallery Image 3" onclick="openLightbox(this)" loading="lazy">
+		                	<img src="images\gallery3.jpg" alt="Gallery Image 4" onclick="openLightbox(this)" loading="lazy">
+		                	<img src="images\gallery4.jpg" alt="Gallery Image 5" onclick="openLightbox(this)" loading="lazy">
+		                	<img src="images\gallery5.jpg" alt="Gallery Image 6" onclick="openLightbox(this)" loading="lazy">
+				</div>
+			</section>
+			<div id="lightbox" class="lightbox" role="dialog" aria-label="Image lightbox">
+				<div class="lightbox-content">
+					<button class="close-btn" onclick="closeLightbox()" aria-label="Close lightbox">&times;</button>
+					<img id="lightbox-img" src="" alt="Enlarged gallery image">
+				</div>
+			</div>-->
+<!-- CONTACT SECTION -->
+			<section id="contact">
+				<h2 class="section-title">Contact</h2>
+				<form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)" action="https://formspree.io/f/xrbbdkly" method="POST">
+					<div class="form-group">
+						<label for="name">Name</label>
+						<input type="text" id="name" name="name" required>
+					</div>
+					<div class="form-group">
+						<label for="email">Email</label>
+						<input type="email" id="email" name="email" required>
+					</div>
+					<div class="form-group">
+						<label for="message">Message</label>
+						<textarea id="message" name="message" rows="5" required></textarea>
+					</div>
+					<button type="submit">Send Message</button>
+				</form>
+			</section>
+			<div id="popup" class="popup">
+				<div class="popup-content">
+					<h3>Thank you for your message!</h3>
+					<p style="padding: 20px;">We have received your message and will get back to you soon.</p>
+					<button onclick="closePopup()">Close</button>
+				</div>
+			</div>
+		</main>
+<!-- FOOTER SECTION -->
+		<footer role="contentinfo">
+			<p>&copy; 2025 Prudhvinath Reddy Katha. All Rights Reserved.</p>
+			<nav aria-label="Footer navigation">
+				<a href="mailto:prudhvinathreddy222@gmail.com" aria-label="Send email">Email</a>
+				<a href="https://www.linkedin.com/in/kpnr/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">LinkedIn</a>
+				<a href="assets/Resume.pdf" class="btn" target="_blank" download="Prudhvi_Resume.pdf" aria-label="Download Resume">Resume</a>
+			</nav>
+		</footer>
+		
+<script src="script.js></script>
 </body>
 </html>
